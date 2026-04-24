@@ -7,6 +7,7 @@ import {
   text,
   time,
   timestamp,
+  unique,
   uuid,
 } from "drizzle-orm/pg-core";
 
@@ -169,24 +170,32 @@ export const patientsTableRelations = relations(
   }),
 );
 
-export const appointmentsTable = pgTable("appointments", {
-  id: uuid("id").defaultRandom().primaryKey(),
-  date: timestamp("date").notNull(),
-  appointmentPriceInCents: integer("appointment_price_in_cents").notNull(),
-  clinicId: uuid("clinic_id")
-    .notNull()
-    .references(() => clinicsTable.id, { onDelete: "cascade" }),
-  patientId: uuid("patient_id")
-    .notNull()
-    .references(() => patientsTable.id, { onDelete: "cascade" }),
-  doctorId: uuid("doctor_id")
-    .notNull()
-    .references(() => doctorsTable.id, { onDelete: "cascade" }),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at")
-    .defaultNow()
-    .$onUpdate(() => new Date()),
-});
+export const appointmentsTable = pgTable(
+  "appointments",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    date: timestamp("date").notNull(),
+    appointmentPriceInCents: integer("appointment_price_in_cents").notNull(),
+    clinicId: uuid("clinic_id")
+      .notNull()
+      .references(() => clinicsTable.id, { onDelete: "cascade" }),
+    patientId: uuid("patient_id")
+      .notNull()
+      .references(() => patientsTable.id, { onDelete: "cascade" }),
+    doctorId: uuid("doctor_id")
+      .notNull()
+      .references(() => doctorsTable.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (t) => [
+    // Prevents double-booking: a doctor can only have one appointment per exact datetime.
+    // This is the last line of defense against race conditions.
+    unique("appointments_doctor_date_unique").on(t.doctorId, t.date),
+  ],
+);
 
 export const appointmentsTableRelations = relations(
   appointmentsTable,

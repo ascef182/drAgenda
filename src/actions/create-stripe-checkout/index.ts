@@ -1,24 +1,24 @@
 "use server";
 
-import { headers } from "next/headers";
 import Stripe from "stripe";
 
-import { auth } from "@/lib/auth";
+import { isDevMode } from "@/lib/env";
 import { actionClient } from "@/lib/next-safe-action";
+import { requireUser } from "@/lib/session";
 
 export const createStripeCheckout = actionClient.action(async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  if (!session?.user) {
-    throw new Error("Unauthorized");
+  const session = await requireUser();
+
+  // DEV MODE: return a mock session ID when Stripe key is a dummy placeholder
+  if (isDevMode()) {
+    console.log("[DEV] Stripe checkout simulated for user:", session.user.id);
+    return { sessionId: "cs_dev_mock_session" };
   }
-  if (!process.env.STRIPE_SECRET_KEY) {
-    throw new Error("Stripe secret key not found");
-  }
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: "2025-05-28.basil",
   });
+
   const { id: sessionId } = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "subscription",
@@ -36,7 +36,6 @@ export const createStripeCheckout = actionClient.action(async () => {
       },
     ],
   });
-  return {
-    sessionId,
-  };
+
+  return { sessionId };
 });
