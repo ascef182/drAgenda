@@ -114,15 +114,17 @@ const AppointmentsChart = ({
                         <span className="text-muted-foreground">
                           Agendamentos:
                         </span>
-                        <span className="font-semibold">{value}</span>
+                        <span className="font-semibold">
+                          {String(value)}
+                        </span>
                       </>
                     );
                   }}
                   labelFormatter={(label, payload) => {
                     if (payload && payload[0]) {
-                      return dayjs(payload[0].payload?.fullDate).format(
-                        "DD/MM/YYYY (dddd)",
-                      );
+                      return dayjs(
+                        payload[0].payload?.fullDate as string,
+                      ).format("DD/MM/YYYY (dddd)");
                     }
                     return label;
                   }}
