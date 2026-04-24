@@ -11,7 +11,7 @@ const PROTECTED_PATHS = [
   "/new-subscription",
 ];
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const isProtected = PROTECTED_PATHS.some((path) =>
