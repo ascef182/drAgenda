@@ -1,6 +1,5 @@
 "use client";
 
-import { loadStripe } from "@stripe/stripe-js";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useAction } from "next-safe-action/hooks";
@@ -23,22 +22,11 @@ export function SubscriptionPlan({
 }: SubscriptionPlanProps) {
   const router = useRouter();
   const createStripeCheckoutAction = useAction(createStripeCheckout, {
-    onSuccess: async ({ data }) => {
-      if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) {
-        throw new Error("Stripe publishable key not found");
+    onSuccess: ({ data }) => {
+      if (!data?.url) {
+        throw new Error("Checkout URL not found");
       }
-      const stripe = await loadStripe(
-        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
-      );
-      if (!stripe) {
-        throw new Error("Stripe not found");
-      }
-      if (!data?.sessionId) {
-        throw new Error("Session ID not found");
-      }
-      await stripe.redirectToCheckout({
-        sessionId: data.sessionId,
-      });
+      window.location.assign(data.url);
     },
   });
   const features = [
@@ -97,7 +85,7 @@ export function SubscriptionPlan({
             className="w-full"
             variant="outline"
             onClick={active ? handleManagePlanClick : handleSubscribeClick}
-            disabled={createStripeCheckoutAction.isExecuting}
+            disabled={createStripeCheckoutAction.isPending}
           >
             {createStripeCheckoutAction.isExecuting ? (
               <Loader2 className="mr-1 h-4 w-4 animate-spin" />

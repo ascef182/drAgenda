@@ -1,5 +1,11 @@
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
-  return <Button>Bootcamp!</Button>;
+  return (
+    <Link href="/authentication">
+      <Button>SAAS Clínicas</Button>
+    </Link>
+  );
 }

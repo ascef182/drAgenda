@@ -15,11 +15,9 @@ export const createStripeCheckout = actionClient.action(async () => {
     return { sessionId: "cs_dev_mock_session" };
   }
 
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: "2025-05-28.basil",
-  });
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-  const { id: sessionId } = await stripe.checkout.sessions.create({
+  const checkoutSession = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "subscription",
     success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard`,
@@ -37,5 +35,5 @@ export const createStripeCheckout = actionClient.action(async () => {
     ],
   });
 
-  return { sessionId };
+  return { url: checkoutSession.url };
 });

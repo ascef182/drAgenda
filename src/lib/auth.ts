@@ -4,14 +4,24 @@ import { customSession } from "better-auth/plugins";
 import { eq } from "drizzle-orm";
 
 import { db } from "@/db";
-import * as schema from "@/db/schema";
-import { usersTable, usersToClinicsTable } from "@/db/schema";
+import {
+  accountsTable,
+  sessionsTable,
+  usersTable,
+  usersToClinicsTable,
+  verificationsTable,
+} from "@/db/schema";
 
 export const auth = betterAuth({
+  baseURL: process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL,
   database: drizzleAdapter(db, {
     provider: "pg",
-    usePlural: true,
-    schema,
+    schema: {
+      user: usersTable,
+      session: sessionsTable,
+      account: accountsTable,
+      verification: verificationsTable,
+    },
   }),
   socialProviders: {
     // Google login is optional — disabled gracefully when credentials are absent
@@ -26,7 +36,6 @@ export const auth = betterAuth({
   },
   plugins: [
     customSession(async ({ user, session }) => {
-      // TODO: colocar cache
       const [userData, clinics] = await Promise.all([
         db.query.usersTable.findFirst({
           where: eq(usersTable.id, user.id),
@@ -39,7 +48,7 @@ export const auth = betterAuth({
           },
         }),
       ]);
-      // TODO: Ao adaptar para o usuário ter múltiplas clínicas, deve-se mudar esse código
+      // TODO: Ao adaptar para o usuário ter múltiplas clínicas, mudar este código
       const clinic = clinics?.[0];
       return {
         user: {
@@ -57,7 +66,6 @@ export const auth = betterAuth({
     }),
   ],
   user: {
-    modelName: "usersTable",
     additionalFields: {
       stripeCustomerId: {
         type: "string",
@@ -75,15 +83,6 @@ export const auth = betterAuth({
         required: false,
       },
     },
-  },
-  session: {
-    modelName: "sessionsTable",
-  },
-  account: {
-    modelName: "accountsTable",
-  },
-  verification: {
-    modelName: "verificationsTable",
   },
   emailAndPassword: {
     enabled: true,
