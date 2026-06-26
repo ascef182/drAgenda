@@ -21,6 +21,8 @@ DrAgenda é um SaaS multi-tenant para clínicas médicas que oferece:
 | PostgreSQL | Banco de dados relacional |
 | Better Auth | Autenticação (email/senha + Google OAuth) |
 | Stripe | Sistema de assinaturas e pagamentos |
+| Sentry | Monitoramento de erros e performance |
+| Upstash Redis | Rate limiting distribuído |
 | shadcn/ui | Componentes UI baseados em Radix UI |
 | Tailwind CSS v4 | Estilização utility-first |
 | React Query (TanStack) | Cache de dados no cliente |
@@ -36,6 +38,11 @@ DrAgenda é um SaaS multi-tenant para clínicas médicas que oferece:
 - Dashboard analytics
 - Sistema de assinaturas via Stripe
 - Preparação para automação via WhatsApp
+- Monitoramento de erros com Sentry
+- Rate limiting distribuído com Upstash Redis
+- Endpoint de health check para uptime monitors
+- Security headers (HSTS, X-Content-Type-Options, etc.)
+- CI pipeline com GitHub Actions
 
 ## Como Testar
 
@@ -68,6 +75,13 @@ STRIPE_ESSENTIAL_PLAN_PRICE_ID=price_...
 # Google OAuth (opcional)
 GOOGLE_CLIENT_ID=...
 GOOGLE_CLIENT_SECRET=...
+
+# Sentry (opcional — deixa vazio para desabilitar)
+NEXT_PUBLIC_SENTRY_DSN=https://...
+
+# Upstash Redis (opcional — sem ele, rate limiting vira no-op)
+UPSTASH_REDIS_REST_URL=https://...
+UPSTASH_REDIS_REST_TOKEN=...
 ```
 
 ## Desenvolvimento Local
@@ -98,13 +112,17 @@ npm run dev
 src/
 ├── app/                    # Next.js App Router
 │   ├── (protected)/      # Rotas autenticadas
-│   └── api/              # API routes
+│   ├── api/              # API routes (stripe/webhook, health)
+│   └── authentication/   # Login/register
 ├── actions/              # Server Actions
+├── services/             # Regras de negócio (domain layer)
+├── data/                 # Repositories (acesso ao banco)
 ├── components/           # Componentes React
 │   └── ui/              # shadcn/ui
-├── db/                  # Drizzle ORM
-├── lib/                 # Utilitários
-└── helpers/             # Funções auxiliares
+├── db/                  # Drizzle ORM + schema
+├── lib/                 # Utilitários (auth, session, ratelimit)
+├── helpers/             # Funções auxiliares
+└── providers/           # React providers
 ```
 
 ## Deploy
@@ -115,12 +133,18 @@ O projeto está preparado para deploy na Vercel com as seguintes variáveis:
 2. **BETTER_AUTH_SECRET** - Chave de autenticação
 3. **NEXT_PUBLIC_APP_URL** - URL do domínio
 4. **STRIPE_*** - Chaves do Stripe
-5. **GOOGLE_*** - Credenciais Google OAuth (opcional)
+5. **SENTRY_*** - DSN do Sentry (opcional)
+6. **UPSTASH_*** - Rate limiting distribuído (opcional)
+7. **GOOGLE_*** - Credenciais Google OAuth (opcional)
 
 ## Roadmap
 
 ### Funcionalidades Planejadas
 
+- [x] Service layer para appointments
+- [x] Session helper compartilhado (requireUser, requireClinic)
+- [x] Security headers + rate limiting
+- [x] Monitoramento com Sentry
 - [ ] Service layer para doctors e patients
 - [ ] RBAC (controle de acesso por papéis)
 - [ ] Audit log
