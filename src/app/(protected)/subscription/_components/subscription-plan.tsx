@@ -8,6 +8,8 @@ import { createStripeCheckout } from "@/actions/create-stripe-checkout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { ESSENTIAL_PLAN } from "@/lib/plans";
 
 interface SubscriptionPlanProps {
   active?: boolean;
@@ -29,14 +31,7 @@ export function SubscriptionPlan({
       window.location.assign(data.url);
     },
   });
-  const features = [
-    "Cadastro de até 3 médicos",
-    "Agendamentos ilimitados",
-    "Métricas básicas",
-    "Cadastro de pacientes",
-    "Confirmação manual",
-    "Suporte via e-mail",
-  ];
+  const plan = ESSENTIAL_PLAN;
 
   const handleSubscribeClick = () => {
     createStripeCheckoutAction.execute();
@@ -49,41 +44,56 @@ export function SubscriptionPlan({
   };
 
   return (
-    <Card className={className}>
+    <Card
+      className={cn(
+        "relative overflow-hidden border-primary/30 shadow-xl shadow-primary/10 ring-1 ring-primary/10",
+        className,
+      )}
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent"
+      />
       <CardHeader>
         <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-bold text-gray-900">Essential</h3>
+          <h3 className="text-2xl font-bold text-foreground">{plan.name}</h3>
           {active && (
-            <Badge className="bg-green-100 text-green-700 hover:bg-green-100">
+            <Badge className="bg-emerald-500/15 text-emerald-600 hover:bg-emerald-500/15">
               Atual
             </Badge>
           )}
         </div>
-        <p className="text-gray-600">
-          Para profissionais autônomos ou pequenas clínicas
-        </p>
-        <div className="flex items-baseline">
-          <span className="text-3xl font-bold text-gray-900">R$59</span>
-          <span className="ml-1 text-gray-600">/ mês</span>
+        <p className="text-muted-foreground">{plan.tagline}</p>
+        <div className="flex items-baseline gap-1">
+          {plan.currency && (
+            <span className="text-2xl font-bold text-foreground">
+              {plan.currency}
+            </span>
+          )}
+          <span className="text-4xl font-extrabold tracking-tight text-foreground">
+            {plan.price}
+          </span>
+          {plan.period && (
+            <span className="ml-1 text-muted-foreground">{plan.period}</span>
+          )}
         </div>
       </CardHeader>
 
       <CardContent>
-        <div className="space-y-4 border-t border-gray-200 pt-6">
-          {features.map((feature, index) => (
-            <div key={index} className="flex items-start">
+        <div className="space-y-4 border-t border-border pt-6">
+          {plan.features.map((feature) => (
+            <div key={feature} className="flex items-start">
               <div className="flex-shrink-0">
-                <CheckCircle2 className="h-5 w-5 text-green-500" />
+                <CheckCircle2 className="h-5 w-5 text-emerald-500" />
               </div>
-              <p className="ml-3 text-gray-600">{feature}</p>
+              <p className="ml-3 text-foreground">{feature}</p>
             </div>
           ))}
         </div>
 
         <div className="mt-8">
           <Button
-            className="w-full"
-            variant="outline"
+            className="h-12 w-full text-base shadow-lg shadow-primary/30 transition-all duration-200 hover:shadow-primary/50 hover:brightness-110"
             onClick={active ? handleManagePlanClick : handleSubscribeClick}
             disabled={createStripeCheckoutAction.isPending}
           >
