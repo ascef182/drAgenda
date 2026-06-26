@@ -9,10 +9,12 @@ import { requireUser } from "@/lib/session";
 export const createStripeCheckout = actionClient.action(async () => {
   const session = await requireUser();
 
-  // DEV MODE: return a mock session ID when Stripe key is a dummy placeholder
+  // DEV MODE: skip the real Stripe API and simulate a successful checkout by
+  // returning a redirect URL (same contract as production: { url }). This keeps
+  // the subscribe flow testable end-to-end locally without charging anything.
   if (isDevMode()) {
     console.log("[DEV] Stripe checkout simulated for user:", session.user.id);
-    return { sessionId: "cs_dev_mock_session" };
+    return { url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard` };
   }
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);

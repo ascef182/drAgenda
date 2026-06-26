@@ -1,0 +1,44 @@
+name: CI
+
+# Validates every push and pull request: type-checking + production build.
+# Lint is intentionally omitted for now — `next lint` was removed in Next 16 and
+# the current ESLint flat config throws a circular-structure error. Repairing the
+# ESLint setup is a tracked follow-up (see docs/PRODUCTION_ROADMAP.md, Sprint 0).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel superseded runs on the same ref to save CI minutes.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # The project relies on legacy peer deps (see .npmrc).
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npm run build
+        env:
+          # Dummy values so module-load code (db/index.ts, auth) does not throw.
+          # No real connection happens during build.
+          DATABASE_URL: postgresql://user:password@localhost:5432/db
+          NEXT_PUBLIC_APP_URL: http://localhost:3000
+          BETTER_AUTH_URL: http://localhost:3000
