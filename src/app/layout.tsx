@@ -13,8 +13,22 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "DrAgenda",
-  description: "SaaS para gestão de clínicas médicas",
+  title: "DrAgenda — Gestão de clínicas que cresce com você",
+  description:
+    "Agenda inteligente com prevenção de conflitos e dashboard financeiro num só painel. Para clínicas que querem crescer sem planilha.",
+  openGraph: {
+    title: "DrAgenda — Gestão de clínicas que cresce com você",
+    description:
+      "Agenda inteligente com prevenção de conflitos e dashboard financeiro num só painel.",
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DrAgenda — Gestão de clínicas que cresce com você",
+    description:
+      "Agenda inteligente com prevenção de conflitos e dashboard financeiro num só painel.",
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +37,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="pt-BR"
+      suppressHydrationWarning
+      data-scroll-behavior="smooth"
+    >
+      <head>
+        {/*
+         * Boot script: marks the document as JS-ready as early as possible so
+         * the .reveal scroll animations only hide content when JS can animate
+         * it back in. If this never runs (JS disabled/failed), .reveal content
+         * stays visible by default — the page is never blank.
+         */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js-ready');",
+          }}
+        />
+      </head>
       <body className={`${manrope.variable} antialiased`}>
         <ReactQueryProvider>
           <NuqsAdapter>{children}</NuqsAdapter>
