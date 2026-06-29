@@ -17,21 +17,6 @@ DrAgenda is a multi-tenant SaaS platform built for medical clinics. Doctors and 
 
 Built solo under a production-grade architecture: Next.js 15 App Router, Server Actions, Stripe subscriptions, Google OAuth, and a WhatsApp automation layer in the roadmap.
 
-| Tecnologia | Propósito |
-|------------|-----------|
-| Next.js 15 (App Router) | Framework React moderno com server components |
-| TypeScript (strict) | Linguagem com tipagem estática |
-| Drizzle ORM | ORM type-safe para PostgreSQL |
-| PostgreSQL | Banco de dados relacional |
-| Better Auth | Autenticação (email/senha + Google OAuth) |
-| Stripe | Sistema de assinaturas e pagamentos |
-| Sentry | Monitoramento de erros e performance |
-| Upstash Redis | Rate limiting distribuído |
-| shadcn/ui | Componentes UI baseados em Radix UI |
-| Tailwind CSS v4 | Estilização utility-first |
-| React Query (TanStack) | Cache de dados no cliente |
-| dayjs | Manipulação de datas/horas |
-
 ## Features
 
 **For Clinics**
@@ -40,12 +25,6 @@ Built solo under a production-grade architecture: Next.js 15 App Router, Server 
 - Smart appointment scheduling with conflict prevention
 - Analytics dashboard with revenue and occupancy metrics
 - Stripe subscription system with plan management
-- WhatsApp automation preparation (roadmap)
-- Error monitoring with Sentry
-- Distributed rate limiting with Upstash Redis
-- Health check endpoint for uptime monitors
-- Security headers (HSTS, X-Content-Type-Options, etc.)
-- CI pipeline with GitHub Actions
 
 **For Patients**
 - Online booking flow
@@ -147,54 +126,12 @@ STRIPE_ESSENTIAL_PLAN_PRICE_ID=price_...
 GOOGLE_CLIENT_ID=...
 GOOGLE_CLIENT_SECRET=...
 
-# Sentry (opcional — deixa vazio para desabilitar)
+# Sentry (optional)
 NEXT_PUBLIC_SENTRY_DSN=https://...
 
-# Upstash Redis (opcional — sem ele, rate limiting vira no-op)
+# Upstash Redis (optional)
 UPSTASH_REDIS_REST_URL=https://...
 UPSTASH_REDIS_REST_TOKEN=...
-```
-
-
-## Desenvolvimento Local
-
-```bash
-# Instalar dependências
-npm install
-
-# Configurar banco (Docker)
-docker run -d --name dragenda-db -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres
-
-# Criar banco
-docker exec -it dragenda-db psql -U postgres -c "CREATE DATABASE \"drAgenda\";"
-
-# Gerar migrations
-npm run db:generate
-
-# Aplicar migrations
-npm run db:migrate
-
-# Iniciar servidor
-npm run dev
-```
-
-## Estrutura de Pastas
-
-```
-src/
-├── app/                    # Next.js App Router
-│   ├── (protected)/      # Rotas autenticadas
-│   ├── api/              # API routes (stripe/webhook, health)
-│   └── authentication/   # Login/register
-├── actions/              # Server Actions
-├── services/             # Regras de negócio (domain layer)
-├── data/                 # Repositories (acesso ao banco)
-├── components/           # Componentes React
-│   └── ui/              # shadcn/ui
-├── db/                  # Drizzle ORM + schema
-├── lib/                 # Utilitários (auth, session, ratelimit)
-├── helpers/             # Funções auxiliares
-└── providers/           # React providers
 ```
 
 ## Deploy
@@ -204,18 +141,11 @@ src/
 1. Create a free PostgreSQL database on [Neon](https://neon.tech)
 2. Connect the repository on Vercel
 3. Add all environment variables in the Vercel dashboard
-   - `DATABASE_URL`, `BETTER_AUTH_SECRET`, `NEXT_PUBLIC_APP_URL`
-   - `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
-   - `SENTRY_*` (optional), `UPSTASH_*` (optional), `GOOGLE_*` (optional)
 4. Set up Stripe webhooks pointing to `https://your-site.vercel.app/api/stripe/webhook`
 5. Update `NEXT_PUBLIC_APP_URL` to your production domain
 
 ## Roadmap
 
-- [x] Service layer for appointments
-- [x] Session helper (requireUser, requireClinic)
-- [x] Security headers + rate limiting
-- [x] Sentry monitoring
 - [ ] Service layer for doctors and patients
 - [ ] RBAC — role-based access control
 - [ ] Audit log
