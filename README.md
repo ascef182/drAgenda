@@ -1,142 +1,151 @@
 # DrAgenda
 
-Software de gestão para clínicas médicas construído com tecnologia moderna, focado em crescimento de receita, automação de processos e retenção de pacientes.
+Modern practice management platform for medical clinics — built to increase revenue, automate workflows, and retain patients.
 
-## Visão do Produto
+![Next.js](https://img.shields.io/badge/Next.js_15-black?style=flat&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat&logo=typescript)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)
+![Drizzle](https://img.shields.io/badge/Drizzle_ORM-type--safe-C5F74F?style=flat)
+![Stripe](https://img.shields.io/badge/Stripe-subscriptions-635BFF?style=flat&logo=stripe&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_v4-utility--first-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
 
-DrAgenda é um SaaS multi-tenant para clínicas médicas que oferece:
+---
 
-- **Crescimento de receita**: agenda inteligente, faturamento, relatórios financeiros
-- **Automação**: lembretes de consulta, confirmações, follow-ups via WhatsApp
-- **Retenção de pacientes**: histórico, comunicação ativa, fidelização
-- **Gestão**: controle de médicos, pacientes, horários, planos de assinatura
+## About
 
-## Stack Técnica
+DrAgenda is a multi-tenant SaaS platform built for medical clinics. Doctors and clinic managers get a unified workspace to handle scheduling, patient communication, billing, and analytics — all in one place.
 
-| Tecnologia | Propósito |
-|------------|-----------|
-| Next.js 15 (App Router) | Framework React moderno com server components |
-| TypeScript (strict) | Linguagem com tipagem estática |
-| Drizzle ORM | ORM type-safe para PostgreSQL |
-| PostgreSQL | Banco de dados relacional |
-| Better Auth | Autenticação (email/senha + Google OAuth) |
-| Stripe | Sistema de assinaturas e pagamentos |
-| shadcn/ui | Componentes UI baseados em Radix UI |
-| Tailwind CSS v4 | Estilização utility-first |
-| React Query (TanStack) | Cache de dados no cliente |
-| dayjs | Manipulação de datas/horas |
+Built solo under a production-grade architecture: Next.js 15 App Router, Server Actions, Stripe subscriptions, Google OAuth, and a WhatsApp automation layer in the roadmap.
 
-## Funcionalidades
+## Features
 
-- Autenticação segura (email/senha + Google)
-- Estrutura multi-clínica (multi-tenant)
-- Gestão de médicos com disponibilidade
-- Gestão de pacientes
-- Agendamentos inteligentes
-- Dashboard analytics
-- Sistema de assinaturas via Stripe
-- Preparação para automação via WhatsApp
+**For Clinics**
+- Multi-tenant structure — each clinic is fully isolated
+- Doctor management with configurable availability
+- Smart appointment scheduling with conflict prevention
+- Analytics dashboard with revenue and occupancy metrics
+- Stripe subscription system with plan management
 
-## Como Testar
+**For Patients**
+- Online booking flow
+- Appointment reminders and confirmations via WhatsApp *(roadmap)*
+- Patient history and communication tracking
 
-Para testar o sistema em modo sandbox, utilize os dados de cartão de teste do Stripe:
+**Technical Highlights**
+- Server Actions with Zod validation — no REST boilerplate
+- Type-safe queries with Drizzle ORM + PostgreSQL
+- Google OAuth via Better Auth
+- Stripe Checkout + Webhooks for subscription lifecycle
+- Tailwind CSS v4 + shadcn/ui design system
+- React Query for client-side cache management
 
-| Campo | Valor |
-|-------|-------|
-| Número do cartão | `4242 4242 4242 4242` |
-| Data de validade | Qualquer data futura (ex: `12/34`) |
-| CVC | Qualquer 3 dígitos (ex: `123`) |
+## Tech Stack
 
-## Variáveis de Ambiente
+| Category | Technology |
+|----------|-----------|
+| Framework | Next.js 15 (App Router), React, TypeScript (strict) |
+| Database | PostgreSQL, Drizzle ORM |
+| Auth | Better Auth — email/password + Google OAuth |
+| Payments | Stripe — Checkout Sessions + Webhooks |
+| UI | Tailwind CSS v4, shadcn/ui, Radix UI |
+| State | TanStack React Query |
+| Date handling | dayjs |
+
+## Architecture
+
+```
+src/
+├── app/
+│   ├── (protected)/        # Authenticated routes
+│   └── api/                # API routes + Stripe webhook
+├── actions/                # Server Actions (Zod-validated)
+├── components/
+│   └── ui/                 # shadcn/ui primitives
+├── db/                     # Drizzle ORM schema + migrations
+├── lib/                    # Shared singletons and utilities
+└── helpers/                # Pure helper functions
+```
+
+The project follows clean architecture principles:
+- **UI Layer** — React components and pages
+- **Application Layer** — Server Actions for orchestration
+- **Domain Layer** — Services with business rules
+- **Infrastructure Layer** — Repository pattern and database access
+
+## Quick Start
+
+**Prerequisites:** Node.js 18+, PostgreSQL (local or Neon), Stripe account, Google OAuth credentials
 
 ```bash
-# Banco de dados
+# 1. Clone and install
+git clone https://github.com/your-username/dragenda.git
+cd dragenda
+npm install
+
+# 2. Configure environment
+cp .env.example .env
+# Fill in your credentials (see Environment Variables)
+
+# 3. Set up database (Docker)
+docker run -d --name dragenda-db \
+  -e POSTGRES_PASSWORD=postgres \
+  -p 5432:5432 postgres
+
+docker exec -it dragenda-db psql -U postgres \
+  -c "CREATE DATABASE \"drAgenda\";"
+
+# 4. Apply migrations
+npm run db:generate
+npm run db:migrate
+
+# 5. Start dev server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Environment Variables
+
+```bash
+# Database
 DATABASE_URL=postgresql://...
 
-# Autenticação
+# Auth
 BETTER_AUTH_SECRET=...
 
 # App
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 
-# Stripe (teste)
-STRIPE_SECRET_KEY=sk_test_...
+# Stripe
+STRIPE_SECRET_KEY=sk_...
 STRIPE_WEBHOOK_SECRET=whsec_...
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_...
 STRIPE_ESSENTIAL_PLAN_PRICE_ID=price_...
 
-# Google OAuth (opcional)
+# Google OAuth (optional)
 GOOGLE_CLIENT_ID=...
 GOOGLE_CLIENT_SECRET=...
 ```
 
-## Desenvolvimento Local
-
-```bash
-# Instalar dependências
-npm install
-
-# Configurar banco (Docker)
-docker run -d --name dragenda-db -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres
-
-# Criar banco
-docker exec -it dragenda-db psql -U postgres -c "CREATE DATABASE \"drAgenda\";"
-
-# Gerar migrations
-npm run db:generate
-
-# Aplicar migrations
-npm run db:migrate
-
-# Iniciar servidor
-npm run dev
-```
-
-## Estrutura de Pastas
-
-```
-src/
-├── app/                    # Next.js App Router
-│   ├── (protected)/      # Rotas autenticadas
-│   └── api/              # API routes
-├── actions/              # Server Actions
-├── components/           # Componentes React
-│   └── ui/              # shadcn/ui
-├── db/                  # Drizzle ORM
-├── lib/                 # Utilitários
-└── helpers/             # Funções auxiliares
-```
-
 ## Deploy
 
-O projeto está preparado para deploy na Vercel com as seguintes variáveis:
+**Vercel + Neon (PostgreSQL)**
 
-1. **DATABASE_URL** - String de conexão do PostgreSQL (Neon recomendado)
-2. **BETTER_AUTH_SECRET** - Chave de autenticação
-3. **NEXT_PUBLIC_APP_URL** - URL do domínio
-4. **STRIPE_*** - Chaves do Stripe
-5. **GOOGLE_*** - Credenciais Google OAuth (opcional)
+1. Create a free PostgreSQL database on [Neon](https://neon.tech)
+2. Connect the repository on Vercel
+3. Add all environment variables in the Vercel dashboard
+4. Set up Stripe webhooks pointing to `https://your-site.vercel.app/api/stripe/webhook`
+5. Update `NEXT_PUBLIC_APP_URL` to your production domain
 
 ## Roadmap
 
-### Funcionalidades Planejadas
-
-- [ ] Service layer para doctors e patients
-- [ ] RBAC (controle de acesso por papéis)
+- [ ] Service layer for doctors and patients
+- [ ] RBAC — role-based access control
 - [ ] Audit log
-- [ ] Automação WhatsApp (Twilio)
-- [ ] Módulo financeiro
-- [ ] Prontuário eletrônico
+- [ ] WhatsApp automation (Twilio)
+- [ ] Financial module with invoicing
+- [ ] Electronic medical records (EMR)
 
-### Arquitetura de Domínio
-
-O projeto segue princípios de clean architecture com:
-
-- **UI Layer**: Componentes React e páginas
-- **Application Layer**: Server Actions para orquestração
-- **Domain Layer**: Services com regras de negócio
-- **Infrastructure Layer**: Repository pattern e acesso ao banco
-
-## Licença
+## License
 
 MIT
