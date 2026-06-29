@@ -1,0 +1,293 @@
+{
+  "Metadata": {
+    "title": "DrAgenda — Gestión de clínicas que crece contigo",
+    "description": "Agenda inteligente con prevención de conflictos y panel financiero en un solo lugar. Para clínicas que quieren crecer sin hojas de cálculo.",
+    "ogDescription": "Agenda inteligente con prevención de conflictos y panel financiero en un solo lugar.",
+    "ogLocale": "es_ES"
+  },
+  "Nav": {
+    "home": "DrAgenda — Página de inicio",
+    "features": "Funciones",
+    "howItWorks": "Cómo funciona",
+    "pricing": "Precios",
+    "faq": "Preguntas",
+    "signIn": "Entrar",
+    "startFree": "Empezar gratis",
+    "language": "Idioma"
+  },
+  "Hero": {
+    "badge": "Para clínicas que quieren crecer",
+    "title": "Tu clínica funcionando en <hl>piloto automático</hl>.",
+    "subtitle": "DrAgenda unifica agenda, médicos y finanzas en un solo panel. Decisiones con datos, no con hojas de cálculo.",
+    "ctaPrimary": "Empezar gratis",
+    "ctaSecondary": "Ver demostración",
+    "reassurance": "Prueba de 14 días. Sin tarjeta de crédito."
+  },
+  "SocialProof": {
+    "heading": "Construido para clínicas que quieren escalar con seguridad",
+    "items": [
+      {
+        "title": "Datos aislados por clínica",
+        "body": "Aislamiento multi-tenant desde la base de datos."
+      },
+      {
+        "title": "Sin doble reserva",
+        "body": "Garantizado por una restricción en la base de datos, no en el frontend."
+      },
+      {
+        "title": "Panel financiero",
+        "body": "Ingresos, citas y rendimiento por médico."
+      },
+      {
+        "title": "Acceso seguro",
+        "body": "Autenticación con e-mail o Google."
+      }
+    ]
+  },
+  "ProblemSolution": {
+    "eyebrow": "El día a día de quien gestiona una clínica",
+    "title": "No necesitas otro sistema. Necesitas uno que lo <hl>resuelva</hl>.",
+    "items": [
+      {
+        "title": "Agenda fragmentada",
+        "body": "Papel, hoja de cálculo y calendario por separado — la recepción pierde tiempo conciliando lo que cabía en un solo lugar."
+      },
+      {
+        "title": "Caja difícil de ver",
+        "body": "Facturación, ticket medio, ingresos por médico — información dispersa en hojas que nadie actualiza a fin de mes."
+      },
+      {
+        "title": "Pacientes que desaparecen del radar",
+        "body": "Sin un registro centralizado, solo descubres que perdiste al paciente cuando ya está en otra clínica."
+      }
+    ],
+    "closing": "DrAgenda organiza todo esto en un panel pensado para la <strong>rutina real de la consulta</strong>."
+  },
+  "Features": {
+    "eyebrow": "Todo en un solo panel",
+    "title": "Lo que ganas desde el primer día.",
+    "subtitle": "Pensado para la rutina real de la consulta — no para diapositivas de presentación.",
+    "items": [
+      {
+        "title": "Agenda a prueba de conflictos",
+        "body": "Huecos según la disponibilidad del médico y prevención de doble reserva garantizada en la base de datos — no en el frontend."
+      },
+      {
+        "title": "Panel financiero",
+        "body": "Facturación, número de citas e ingresos por médico en tiempo real. Sin exportar hojas de cálculo."
+      },
+      {
+        "title": "Disponibilidad por médico",
+        "body": "Cada profesional define sus días y franjas horarias. La agenda los respeta automáticamente."
+      },
+      {
+        "title": "Historial del paciente",
+        "body": "Ficha completa con contacto, citas e historial de atención en un solo lugar."
+      },
+      {
+        "title": "Aislamiento por clínica",
+        "body": "Los datos de cada clínica quedan aislados desde la base de datos — sin riesgo de que una clínica vea los datos de otra."
+      },
+      {
+        "title": "Seguro por defecto",
+        "body": "Aislamiento por clínica, autenticación con Google o e-mail y cobros vía Stripe — infraestructura seria."
+      }
+    ],
+    "miniAgenda": {
+      "next": "Próximo",
+      "blocked": "Bloqueado",
+      "free": "Libre"
+    },
+    "miniChartLabel": "Facturación de la semana"
+  },
+  "HowItWorks": {
+    "eyebrow": "Cómo funciona",
+    "title": "Sal del papel en 3 pasos.",
+    "steps": [
+      {
+        "title": "Crea tu clínica",
+        "body": "1 minuto. E-mail o Google. Sin tarjeta."
+      },
+      {
+        "title": "Registra médicos y horarios",
+        "body": "Importa tu lista de pacientes y configura la disponibilidad."
+      },
+      {
+        "title": "Sigue todo en tiempo real",
+        "body": "El panel se actualiza con cada cita. Decides con datos, no con suposiciones."
+      }
+    ]
+  },
+  "DashboardDetail": {
+    "eyebrow": "Demostración",
+    "title": "El panel que abres cada mañana.",
+    "subtitle": "Pensado para entenderse en 5 segundos, incluso con la recepción de pie.",
+    "items": [
+      {
+        "title": "KPIs del día en tiempo real",
+        "body": "Ingresos, citas y tasa de confirmación en el primer vistazo. Decisión en segundos."
+      },
+      {
+        "title": "Gráfico de facturación",
+        "body": "Mira la salud financiera de la clínica en los últimos 7, 30 o 90 días de un vistazo."
+      },
+      {
+        "title": "Próximas citas con estado",
+        "body": "Cada cita muestra al paciente, al médico responsable y el estado actual de la consulta."
+      }
+    ]
+  },
+  "DashboardMockup": {
+    "overview": "Visión general",
+    "greeting": "Buenos días, Dra. Ana",
+    "live": "En vivo",
+    "statRevenueLabel": "Ingresos semana",
+    "statTodayLabel": "Citas hoy",
+    "statDoneLabel": "Completadas",
+    "freeSlots": "3 libres",
+    "today": "hoy",
+    "revenue7d": "Facturación — últimos 7 días",
+    "upcoming": "Próximas citas",
+    "todayCount": "Hoy · 18",
+    "confirmed": "Confirmada",
+    "pending": "Pendiente",
+    "days": ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]
+  },
+  "Roi": {
+    "eyebrow": "Por qué elegirnos",
+    "title": "Ingeniería seria, de la base de datos a la interfaz.",
+    "subtitle": "Cada decisión técnica se tomó pensando en clínicas que necesitan crecer sin dolores de cabeza.",
+    "items": [
+      {
+        "title": "Agenda a prueba de conflictos",
+        "body": "La prevención de doble reserva es una restricción en la base de datos — no depende de la validación del frontend ni de la memoria de la recepción."
+      },
+      {
+        "title": "Visión financiera en tiempo real",
+        "body": "Facturación, número de citas e ingresos por médico actualizados con cada cita. Sin exportar hojas de cálculo."
+      },
+      {
+        "title": "Datos aislados por clínica",
+        "body": "Multi-tenant nativo: cada clínica tiene su propio espacio de datos desde la capa de la base de datos. Tú decides qué compartes."
+      }
+    ]
+  },
+  "Pricing": {
+    "eyebrow": "Inversión",
+    "title": "Un precio justo. Sin permanencia.",
+    "subtitle": "Empieza gratis. Sigue por menos que una consulta privada al mes.",
+    "footnote": "Sin permanencia · Cancela cuando quieras. ¿Necesitas algo a medida? <link>Habla con nosotros</link>."
+  },
+  "Plans": {
+    "period": "/mes",
+    "essential": {
+      "name": "Essential",
+      "tagline": "Para autónomos y clínicas que quieren dejar las hojas de cálculo.",
+      "features": [
+        "Médicos ilimitados",
+        "Pacientes ilimitados",
+        "Agenda a prueba de conflictos",
+        "Panel con analítica y finanzas",
+        "Acceso con e-mail o Google",
+        "Soporte por e-mail"
+      ],
+      "ctaLabel": "Empezar ahora"
+    },
+    "pro": {
+      "name": "Pro",
+      "tagline": "Automatización y equipo — para clínicas en pleno crecimiento.",
+      "badge": "Próximamente",
+      "features": [
+        "Todo lo de Essential",
+        "Recordatorios y confirmaciones automáticas por WhatsApp",
+        "Roles y permisos para el equipo",
+        "Registro de auditoría de las acciones",
+        "Soporte prioritario"
+      ],
+      "ctaLabel": "Unirme a la lista de espera"
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "tagline": "Para redes y operaciones multi-clínica a gran escala.",
+      "priceLabel": "A consultar",
+      "features": [
+        "Todo lo de Pro",
+        "Multi-clínica a gran escala",
+        "Onboarding dedicado",
+        "SLA y soporte dedicado",
+        "Integraciones a medida"
+      ],
+      "ctaLabel": "Hablar con nosotros"
+    }
+  },
+  "Faq": {
+    "eyebrow": "Preguntas frecuentes",
+    "title": "Antes de que preguntes.",
+    "items": [
+      {
+        "q": "¿Necesito tarjeta de crédito para probar?",
+        "a": "No. Creas tu cuenta con e-mail o Google y usas DrAgenda durante 14 días sin facilitar ningún dato de pago. ¿Te gusta? Eliges el plan después. ¿No te gusta? Simplemente no continúas."
+      },
+      {
+        "q": "Tengo más de un médico en la clínica. ¿Funciona?",
+        "a": "Funciona muy bien. Cada profesional tiene su propia agenda y sus propios horarios de atención, y tú sigues el rendimiento de cada uno en el panel — todo en un solo lugar."
+      },
+      {
+        "q": "¿Y si dos citas caen en el mismo horario?",
+        "a": "No puede pasar. DrAgenda bloquea automáticamente la segunda cita — nunca dos pacientes en el mismo horario del mismo médico, aunque dos personas intenten reservar a la vez. Adiós a los pacientes esperando en recepción por error."
+      },
+      {
+        "q": "¿Mis datos y los de mis pacientes están seguros?",
+        "a": "Sí. La información de tu clínica queda separada de la de cualquier otra y viaja siempre por una conexión cifrada. Estamos preparando la operación para Europa siguiendo el RGPD — tú sigues siendo el dueño de tus datos, y nosotros solo los tratamos para que el sistema funcione para ti."
+      },
+      {
+        "q": "¿Puedo traer mi agenda actual?",
+        "a": "Puedes, y te ayudamos. Durante la primera semana, nuestro equipo te apoya para configurar la cuenta y registrar a los primeros médicos y pacientes — sin coste adicional."
+      },
+      {
+        "q": "¿Puedo usarlo en el móvil, fuera de la consulta?",
+        "a": "Sí. DrAgenda se abre directamente en el navegador, en el ordenador, la tablet o el móvil. Nada que instalar — accedes a tu agenda desde donde estés."
+      },
+      {
+        "q": "¿Hay permanencia? ¿Puedo cancelar cuando quiera?",
+        "a": "Sin permanencia y sin letra pequeña. Pagas mes a mes y cancelas cuando quieras, en unos clics. Sin penalización y sin tener que hablar con nadie."
+      },
+      {
+        "q": "¿En cuánto tiempo empiezo a usarlo?",
+        "a": "En minutos. Creas la cuenta, registras la clínica y ya agendas la primera cita el mismo día — sin formación y sin instalación."
+      }
+    ]
+  },
+  "CtaFinal": {
+    "title": "Tu próxima cita ya podría estar agendada.",
+    "subtitle": "Empieza gratis en menos de 1 minuto. Sin tarjeta. Sin permanencia.",
+    "ctaPrimary": "Crear mi cuenta",
+    "ctaSecondary": "Ver demostración"
+  },
+  "Footer": {
+    "tagline": "La plataforma de gestión para clínicas que quieren crecer con organización, datos y una atención cercana.",
+    "product": {
+      "title": "Producto",
+      "features": "Funciones",
+      "howItWorks": "Cómo funciona",
+      "pricing": "Precios",
+      "faq": "Preguntas"
+    },
+    "company": {
+      "title": "Empresa",
+      "about": "Acerca de",
+      "blog": "Blog",
+      "contact": "Contacto",
+      "careers": "Empleo"
+    },
+    "legal": {
+      "title": "Legal",
+      "terms": "Términos de uso",
+      "privacy": "Privacidad",
+      "gdpr": "RGPD",
+      "cookies": "Cookies"
+    },
+    "rights": "© {year} DrAgenda. Todos los derechos reservados.",
+    "descriptor": "Software de gestión para clínicas"
+  }
+}

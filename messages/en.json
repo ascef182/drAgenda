@@ -1,0 +1,293 @@
+{
+  "Metadata": {
+    "title": "DrAgenda — Clinic management that grows with you",
+    "description": "A smart schedule with conflict prevention and a financial dashboard in a single panel. For clinics that want to grow without spreadsheets.",
+    "ogDescription": "A smart schedule with conflict prevention and a financial dashboard in a single panel.",
+    "ogLocale": "en_US"
+  },
+  "Nav": {
+    "home": "DrAgenda — Home",
+    "features": "Features",
+    "howItWorks": "How it works",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "signIn": "Sign in",
+    "startFree": "Start free",
+    "language": "Language"
+  },
+  "Hero": {
+    "badge": "For clinics that want to grow",
+    "title": "Your clinic running on <hl>autopilot</hl>.",
+    "subtitle": "DrAgenda brings scheduling, doctors and finances into a single panel. Decisions based on data, not spreadsheets.",
+    "ctaPrimary": "Start free",
+    "ctaSecondary": "See the demo",
+    "reassurance": "14-day trial. No credit card."
+  },
+  "SocialProof": {
+    "heading": "Built for clinics that want to scale securely",
+    "items": [
+      {
+        "title": "Data isolated per clinic",
+        "body": "Multi-tenant isolation right from the database."
+      },
+      {
+        "title": "No double booking",
+        "body": "Guaranteed by a database constraint, not the frontend."
+      },
+      {
+        "title": "Financial dashboard",
+        "body": "Revenue, appointments and performance per doctor."
+      },
+      {
+        "title": "Secure sign-in",
+        "body": "Authentication with email or Google."
+      }
+    ]
+  },
+  "ProblemSolution": {
+    "eyebrow": "The daily reality of running a clinic",
+    "title": "You don't need another system. You need one that <hl>solves it</hl>.",
+    "items": [
+      {
+        "title": "Fragmented schedule",
+        "body": "Paper, spreadsheet and calendar all separate — the front desk wastes time reconciling what belonged in one place."
+      },
+      {
+        "title": "Cash flow you can't see",
+        "body": "Revenue, average ticket, income per doctor — scattered across spreadsheets no one updates at month's end."
+      },
+      {
+        "title": "Patients that drop off the radar",
+        "body": "Without a central record, you only find out you lost a patient once they're already at another clinic."
+      }
+    ],
+    "closing": "DrAgenda organizes all of it in a panel built for the <strong>real routine of a practice</strong>."
+  },
+  "Features": {
+    "eyebrow": "All in one panel",
+    "title": "What you get from day one.",
+    "subtitle": "Built for the real routine of a practice — not for presentation slides.",
+    "items": [
+      {
+        "title": "Conflict-proof schedule",
+        "body": "Slots based on each doctor's availability and double-booking prevention guaranteed in the database — not the frontend."
+      },
+      {
+        "title": "Financial dashboard",
+        "body": "Revenue, number of appointments and income per doctor in real time. No spreadsheet exports."
+      },
+      {
+        "title": "Availability per doctor",
+        "body": "Each professional sets their own days and time ranges. The schedule respects them automatically."
+      },
+      {
+        "title": "Patient history",
+        "body": "A complete record with contact details, appointments and care history in a single file."
+      },
+      {
+        "title": "Isolation per clinic",
+        "body": "Each clinic's data stays isolated from the database up — no risk of one clinic seeing another's data."
+      },
+      {
+        "title": "Secure by default",
+        "body": "Per-clinic isolation, authentication with Google or email and billing via Stripe — serious infrastructure."
+      }
+    ],
+    "miniAgenda": {
+      "next": "Next",
+      "blocked": "Blocked",
+      "free": "Free"
+    },
+    "miniChartLabel": "This week's revenue"
+  },
+  "HowItWorks": {
+    "eyebrow": "How it works",
+    "title": "Off paper in 3 steps.",
+    "steps": [
+      {
+        "title": "Create your clinic",
+        "body": "1 minute. Email or Google. No card."
+      },
+      {
+        "title": "Add doctors and hours",
+        "body": "Import your patient list and set up availability."
+      },
+      {
+        "title": "Track it in real time",
+        "body": "The dashboard updates with every appointment. You decide with data, not guesswork."
+      }
+    ]
+  },
+  "DashboardDetail": {
+    "eyebrow": "Demo",
+    "title": "The panel you open every morning.",
+    "subtitle": "Designed to be understood in 5 seconds, even with the front desk on their feet.",
+    "items": [
+      {
+        "title": "Today's KPIs in real time",
+        "body": "Revenue, appointments and confirmation rate above the fold. Decisions in seconds."
+      },
+      {
+        "title": "Revenue chart",
+        "body": "See the clinic's financial health over the last 7, 30 or 90 days at a glance."
+      },
+      {
+        "title": "Upcoming appointments with status",
+        "body": "Each appointment shows the patient, the responsible doctor and the current status of the visit."
+      }
+    ]
+  },
+  "DashboardMockup": {
+    "overview": "Overview",
+    "greeting": "Good morning, Dr. Ana",
+    "live": "Live",
+    "statRevenueLabel": "Weekly revenue",
+    "statTodayLabel": "Appointments today",
+    "statDoneLabel": "Completed",
+    "freeSlots": "3 free",
+    "today": "today",
+    "revenue7d": "Revenue — last 7 days",
+    "upcoming": "Upcoming appointments",
+    "todayCount": "Today · 18",
+    "confirmed": "Confirmed",
+    "pending": "Pending",
+    "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+  },
+  "Roi": {
+    "eyebrow": "Why choose us",
+    "title": "Serious engineering, from the database to the interface.",
+    "subtitle": "Every technical decision was made for clinics that need to grow without headaches.",
+    "items": [
+      {
+        "title": "Conflict-proof schedule",
+        "body": "Double-booking prevention is a database constraint — it doesn't rely on frontend validation or the front desk's memory."
+      },
+      {
+        "title": "Real-time financial view",
+        "body": "Revenue, number of appointments and income per doctor updated with every appointment. No spreadsheet exports."
+      },
+      {
+        "title": "Data isolated per clinic",
+        "body": "Natively multi-tenant: each clinic has its own data space from the database layer. You decide what you share."
+      }
+    ]
+  },
+  "Pricing": {
+    "eyebrow": "Investment",
+    "title": "A fair price. No lock-in.",
+    "subtitle": "Start free. Keep going for less than one private consultation a month.",
+    "footnote": "No lock-in · Cancel anytime. Need something tailored? <link>Talk to us</link>."
+  },
+  "Plans": {
+    "period": "/mo",
+    "essential": {
+      "name": "Essential",
+      "tagline": "For solo practitioners and clinics ready to leave spreadsheets behind.",
+      "features": [
+        "Unlimited doctors",
+        "Unlimited patients",
+        "Conflict-proof schedule",
+        "Dashboard with analytics and finances",
+        "Sign in with email or Google",
+        "Email support"
+      ],
+      "ctaLabel": "Get started"
+    },
+    "pro": {
+      "name": "Pro",
+      "tagline": "Automation and team management — for clinics in growth mode.",
+      "badge": "Coming soon",
+      "features": [
+        "Everything in Essential",
+        "Automatic WhatsApp reminders and confirmations",
+        "Roles and permissions for your team",
+        "Audit log of actions",
+        "Priority support"
+      ],
+      "ctaLabel": "Join the waitlist"
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "tagline": "For networks and multi-clinic operations at scale.",
+      "priceLabel": "Custom",
+      "features": [
+        "Everything in Pro",
+        "Multi-clinic at scale",
+        "Dedicated onboarding",
+        "SLA and dedicated support",
+        "Custom integrations"
+      ],
+      "ctaLabel": "Talk to us"
+    }
+  },
+  "Faq": {
+    "eyebrow": "Frequently asked questions",
+    "title": "Before you ask.",
+    "items": [
+      {
+        "q": "Do I need a credit card to try it?",
+        "a": "No. You create your account with email or Google and use DrAgenda for 14 days without entering any payment details. Like it? Pick a plan afterward. Don't? Just don't continue."
+      },
+      {
+        "q": "I have more than one doctor at the clinic. Does it work?",
+        "a": "It works great. Each professional has their own schedule and their own working hours, and you track everyone's performance in the dashboard — all in one place."
+      },
+      {
+        "q": "What if two appointments land on the same time slot?",
+        "a": "It can't happen. DrAgenda automatically blocks the second appointment — never two patients in the same slot with the same doctor, even if two people try to book at once. No more patients waiting at the front desk by mistake."
+      },
+      {
+        "q": "Are my data and my patients' data safe?",
+        "a": "Yes. Your clinic's information stays separate from any other and always travels over an encrypted connection. We're preparing the operation for Europe in line with the GDPR — you remain the owner of your data, and we only process it to make the system work for you."
+      },
+      {
+        "q": "Can I bring my current schedule?",
+        "a": "You can, and we help. In the first week, our team supports you in setting up the account and registering your first doctors and patients — at no extra cost."
+      },
+      {
+        "q": "Can I use it on my phone, outside the practice?",
+        "a": "Yes. DrAgenda opens right in the browser, on your computer, tablet or phone. Nothing to install — you reach your schedule wherever you are."
+      },
+      {
+        "q": "Is there a lock-in? Can I cancel anytime?",
+        "a": "No lock-in and no fine print. You pay month to month and cancel whenever you want, in a few clicks. No penalty and no need to talk to anyone."
+      },
+      {
+        "q": "How soon can I start using it?",
+        "a": "In minutes. You create the account, register the clinic and book the first appointment the same day — no training and no installation."
+      }
+    ]
+  },
+  "CtaFinal": {
+    "title": "Your next appointment could already be booked.",
+    "subtitle": "Start free in under 1 minute. No card. No lock-in.",
+    "ctaPrimary": "Create my account",
+    "ctaSecondary": "See the demo"
+  },
+  "Footer": {
+    "tagline": "The management platform for clinics that want to grow with organization, data and a human touch.",
+    "product": {
+      "title": "Product",
+      "features": "Features",
+      "howItWorks": "How it works",
+      "pricing": "Pricing",
+      "faq": "FAQ"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About",
+      "blog": "Blog",
+      "contact": "Contact",
+      "careers": "Careers"
+    },
+    "legal": {
+      "title": "Legal",
+      "terms": "Terms of use",
+      "privacy": "Privacy",
+      "gdpr": "GDPR",
+      "cookies": "Cookies"
+    },
+    "rights": "© {year} DrAgenda. All rights reserved.",
+    "descriptor": "Clinic management software"
+  }
+}

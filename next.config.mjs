@@ -1,4 +1,7 @@
 import { withSentryConfig } from "@sentry/nextjs";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 
@@ -36,7 +39,9 @@ const nextConfig = {
 
 // Source map upload is disabled (no SENTRY_AUTH_TOKEN yet) — stack traces stay
 // minified in prod for now. Wrapping is inert at runtime without a DSN.
-export default withSentryConfig(nextConfig, {
-  silent: true,
-  sourcemaps: { disable: true },
-});
+export default withNextIntl(
+  withSentryConfig(nextConfig, {
+    silent: true,
+    sourcemaps: { disable: true },
+  }),
+);
